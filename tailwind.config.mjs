@@ -2,6 +2,9 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      screens: {
+        nav: '900px',
+      },
       colors: {
         primary: {
           50:  '#f0f9ff',
