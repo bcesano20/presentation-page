@@ -1,0 +1,98 @@
+---
+const skillGroups = [
+  {
+    category: 'Frontend',
+    icon: '🎨',
+    skills: [
+      { name: 'HTML5',       level: 95 },
+      { name: 'CSS3',        level: 90 },
+      { name: 'JavaScript',  level: 88 },
+      { name: 'TypeScript',  level: 75 },
+      { name: 'React',       level: 80 },
+      { name: 'Astro',       level: 85 },
+      { name: 'Tailwind CSS',level: 90 },
+    ],
+  },
+  {
+    category: 'Backend',
+    icon: '⚙️',
+    skills: [
+      { name: 'Node.js',   level: 78 },
+      { name: 'Python',    level: 70 },
+      { name: 'REST APIs', level: 82 },
+      { name: 'SQL',       level: 72 },
+    ],
+  },
+  {
+    category: 'Tools & DevOps',
+    icon: '🛠️',
+    skills: [
+      { name: 'Git',        level: 88 },
+      { name: 'GitHub',     level: 85 },
+      { name: 'VS Code',    level: 95 },
+      { name: 'Docker',     level: 60 },
+      { name: 'Vercel',     level: 80 },
+      { name: 'Figma',      level: 65 },
+    ],
+  },
+];
+
+const techBadges = [
+  'HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Astro',
+  'Tailwind CSS', 'Node.js', 'Python', 'SQL', 'Git', 'Docker',
+  'Vercel', 'Figma', 'REST APIs', 'GitHub',
+];
+---
+
+<section id="skills" class="py-24 bg-primary-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">What I work with</span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">Skills</h2>
+      <div class="mt-4 mx-auto w-16 h-1 bg-accent-400 rounded-full"></div>
+    </div>
+
+    <!-- Skill groups grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      {skillGroups.map((group) => (
+        <div class="bg-white rounded-3xl p-6 shadow-sm border border-primary-100 hover:shadow-md hover:border-primary-200 transition-all">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">{group.icon}</span>
+            <h3 class="font-bold text-slate-800 text-lg">{group.category}</h3>
+          </div>
+          <div class="space-y-4">
+            {group.skills.map((skill) => (
+              <div>
+                <div class="flex justify-between text-sm mb-1.5">
+                  <span class="font-medium text-slate-700">{skill.name}</span>
+                  <span class="text-slate-400 text-xs">{skill.level}%</span>
+                </div>
+                <div class="h-1.5 bg-primary-100 rounded-full overflow-hidden">
+                  <div
+                    class="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full"
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tech badges cloud -->
+    <div class="text-center">
+      <p class="text-slate-500 text-sm font-medium mb-6 uppercase tracking-widest">Technologies I've touched</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        {techBadges.map((tech) => (
+          <span class="px-4 py-2 bg-white text-slate-700 text-sm font-medium rounded-full border border-primary-200 hover:border-primary-400 hover:text-primary-600 hover:bg-primary-50 transition-all cursor-default shadow-sm">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
