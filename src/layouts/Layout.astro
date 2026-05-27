@@ -3,8 +3,15 @@ import HamburgerMenu from '../components/HamburgerMenu.astro';
 
 interface Props {
   title?: string;
+  description?: string;
 }
-const { title = 'Bruno Cesano — Portfolio' } = Astro.props;
+
+const SITE_URL = 'https://your-project.vercel.app'; // TODO: replace with your Vercel URL
+
+const {
+  title       = 'Bruno Cesano — Full-Stack Developer & Computer Engineer',
+  description = 'Personal website of Bruno Cesano, a Full-Stack Developer and Computer Engineer based in Barcelona. Building modern web applications with React, Django, Python, and more.',
+} = Astro.props;
 
 const navLinks = [
   { href: '#about',    label: 'About'    },
@@ -19,8 +26,30 @@ const navLinks = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bruno Cesano — Personal Portfolio" />
+
+    <!-- Primary SEO -->
     <title>{title}</title>
+    <meta name="description"  content={description} />
+    <meta name="author"       content="Bruno Cesano" />
+    <meta name="robots"       content="index, follow" />
+    <link rel="canonical"     href={SITE_URL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+
+    <!-- Theme color (mobile browser bar) -->
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={SITE_URL} />
+    <meta property="og:site_name"   content="Bruno Cesano — Portfolio" />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={`${SITE_URL}/og-image.png`} />
+    <meta property="og:locale"      content="en_US" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
