@@ -1,4 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+
+import profileImg from '../images/profile.jpeg';
+import premiaImg1 from '../images/premia-1.jpeg';
+import premiaImg2 from '../images/premia-2.jpeg';
+import premiaImg3 from '../images/premia-3.jpeg';
+import premiaImg4 from '../images/premia-4.jpeg';
 ---
 
 <section id="about" class="py-24 bg-white">
@@ -9,49 +16,69 @@
       <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">Who I am</span>
       <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">About Me</h2>
       <div class="mt-4 mx-auto w-16 h-1 bg-accent-400 rounded-full"></div>
+      <p class="text-slate-600 text-lg text-center leading-relaxed max-w-[720px] mt-4 mx-auto">
+        I’m a Computer Engineer graduated from the Universidad Nacional de Tucumán, Argentina, 
+        currently living in Premià de Mar, Barcelona.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <!-- Left: image / decorative card -->
+      <!-- Left: photo mosaic collage -->
       <div class="relative flex justify-center">
-        <div class="relative w-72 sm:w-80">
-          <!-- Main card -->
-          <div class="w-full aspect-square rounded-3xl bg-gradient-to-br from-primary-100 to-primary-200 border border-primary-200 flex items-center justify-center shadow-xl">
-            <div class="text-center p-8">
-              <div class="w-20 h-20 rounded-2xl bg-primary-500 mx-auto mb-4 flex items-center justify-center shadow-lg">
-                <span class="text-2xl font-black text-white">BC</span>
+        <div class="relative w-[300px] h-[360px] sm:w-[380px] sm:h-[440px]">
+
+          <!-- 4 background mosaic tiles -->
+          <div class="absolute top-0 left-0 w-[130px] h-[158px] sm:w-[168px] sm:h-[204px] rounded-2xl overflow-hidden shadow-lg -rotate-3 border-2 border-white">
+            <Image src={premiaImg1} alt="" class="w-full h-full object-cover object-top" />
+          </div>
+          <div class="absolute top-0 right-0 w-[130px] h-[158px] sm:w-[168px] sm:h-[204px] rounded-2xl overflow-hidden shadow-lg rotate-2 border-2 border-white">
+            <Image src={premiaImg3} alt="" class="w-full h-full object-cover object-left-top" />
+          </div>
+          <div class="absolute bottom-0 left-0 w-[130px] h-[158px] sm:w-[168px] sm:h-[204px] rounded-2xl overflow-hidden shadow-lg rotate-1 border-2 border-white">
+            <Image src={premiaImg2} alt="" class="w-full h-full object-cover object-center" />
+          </div>
+          <div class="absolute bottom-0 right-0 w-[130px] h-[158px] sm:w-[168px] sm:h-[204px] rounded-2xl overflow-hidden shadow-lg -rotate-2 border-2 border-white">
+            <Image src={premiaImg4} alt="" class="w-full h-full object-cover object-right-top" />
+          </div>
+
+          <!-- Main profile card — centered, layered on top -->
+          <div class="absolute inset-0 flex items-center justify-center z-10">
+            <div class="relative">
+              <div class="w-[148px] h-[188px] sm:w-52 sm:h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                <Image src={profileImg} alt="Bruno Cesano" class="w-full h-full object-cover object-top" />
               </div>
-              <p class="font-bold text-slate-700 text-lg">Bruno Cesano</p>
-              <p class="text-primary-600 text-sm font-medium mt-1">Full-Stack Developer</p>
-              <p class="text-slate-500 text-xs mt-2">Buenos Aires, Argentina</p>
+              <!-- Badges -->
+              <div class="absolute -top-3 -right-8 bg-accent-400 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-md rotate-3 whitespace-nowrap">
+                Open to work
+              </div>
+              <div class="absolute -bottom-3 -left-8 bg-primary-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-md -rotate-2 whitespace-nowrap">
+                3+ years exp.
+              </div>
             </div>
           </div>
-          <!-- Floating accent badges -->
-          <div class="absolute -top-4 -right-4 bg-accent-400 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-md rotate-3">
-            Open to work
-          </div>
-          <div class="absolute -bottom-4 -left-4 bg-primary-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-md -rotate-2">
-            3+ years exp.
-          </div>
+
         </div>
       </div>
 
       <!-- Right: text content -->
       <div class="space-y-6">
-        <p class="text-slate-600 text-lg leading-relaxed">
-          I'm a passionate developer based in Buenos Aires, Argentina. I love building things for the web — from
-          pixel-perfect interfaces to solid backend systems.
+        <p class="text-slate-600 leading-relaxed">
+          Over the last 3 years, I’ve been working as a Full Stack Developer, 
+          focusing on building web applications and enjoying every stage of the software 
+          development process. Although I work across the stack, I naturally feel more 
+          connected to software development and backend-oriented problem solving.
         </p>
         <p class="text-slate-600 leading-relaxed">
-          My journey in software started with curiosity and grew into a real craft. I enjoy
-          the challenge of turning complex problems into simple, elegant solutions. When I'm not
-          coding, I'm exploring new technologies, contributing to open-source, or learning
-          about design systems.
+          Throughout my experience, I’ve worked on both short and long-term projects 
+          involving large volumes of data, real-time maintenance, and end-to-end feature
+          development. These experiences helped me develop not only technical skills, but 
+          also adaptability and a product-oriented mindset.
         </p>
         <p class="text-slate-600 leading-relaxed">
-          I care deeply about code quality, user experience, and continuous improvement. I'm always
-          looking for opportunities to collaborate on interesting projects and grow as a developer.
+          I enjoy learning, improving continuously, and building solutions that create real value. 
+          Currently, I’m open to new opportunities where I can keep growing and contribute as part 
+          of a great team.
         </p>
 
         <!-- Highlight cards -->

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+
+import profileImg from '../images/profile.jpeg';
 ---
 
 <section
@@ -24,16 +27,17 @@
       <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-4">
         Hi, I'm
         <span class="text-primary-500"> Bruno</span>
-        <span class="block text-accent-500">Cesano.</span>
+        <span class="block text-accent-500">Cesano</span>
       </h1>
 
       <p class="text-xl sm:text-2xl text-slate-600 font-medium mb-4">
-        Full-Stack Developer &amp; UI Enthusiast
+        Full-Stack Developer &amp; Computation Engineer
       </p>
 
       <p class="text-base sm:text-lg text-slate-500 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-        I build fast, modern, and accessible web experiences. Passionate about clean code,
-        thoughtful design, and turning ideas into polished products.
+        Full Stack Developer and Computer Engineer with 3 years of experience building web applications 
+        using React and Django. Strong backend focus, designing REST APIs and working with PostgreSQL. 
+        Proven ability to deliver end-to-end features and deploy applications.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -55,11 +59,11 @@
       <div class="flex gap-8 mt-12 justify-center lg:justify-start">
         <div>
           <p class="text-2xl font-bold text-slate-900">3+</p>
-          <p class="text-sm text-slate-500">Years coding</p>
+          <p class="text-sm text-slate-500">Years experience</p>
         </div>
         <div class="w-px bg-slate-200"></div>
         <div>
-          <p class="text-2xl font-bold text-slate-900">10+</p>
+          <p class="text-2xl font-bold text-slate-900">30+</p>
           <p class="text-sm text-slate-500">Projects built</p>
         </div>
         <div class="w-px bg-slate-200"></div>
@@ -73,11 +77,11 @@
     <!-- Avatar / decorative card -->
     <div class="flex-shrink-0 relative">
       <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary-400 to-primary-600 shadow-2xl shadow-primary-200 flex items-center justify-center relative overflow-hidden">
-        <!-- Initials placeholder — swap with <img> when you have a photo -->
-        <span class="text-8xl font-black text-white/20 select-none">BC</span>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <span class="text-6xl font-black text-white select-none">BC</span>
-        </div>
+        <Image
+          src={profileImg}
+          alt="Bruno Cesano"
+          class="absolute inset-0 w-full h-full object-cover object-top"
+        />
         <!-- Yellow accent dot -->
         <div class="absolute -bottom-3 -right-3 w-16 h-16 bg-accent-400 rounded-2xl rotate-12 shadow-lg"></div>
         <div class="absolute -top-3 -left-3 w-10 h-10 bg-primary-200 rounded-xl -rotate-6"></div>
