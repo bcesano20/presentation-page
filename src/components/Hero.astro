@@ -18,7 +18,7 @@ import profileImg from '../images/profile.jpeg';
   <div class="relative max-w-6xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center gap-12 py-20">
 
     <!-- Text content -->
-    <div class="flex-1 text-center lg:text-left">
+    <div class="flex-1 text-center lg:text-left" data-animate="fade-right">
       <div class="inline-flex items-center gap-2 bg-primary-100 text-primary-700 text-sm font-medium px-4 py-1.5 rounded-full mb-6 border border-primary-200">
         <span class="w-2 h-2 bg-accent-400 rounded-full animate-pulse"></span>
         Available for new opportunities
@@ -75,16 +75,13 @@ import profileImg from '../images/profile.jpeg';
     </div>
 
     <!-- Avatar / decorative card -->
-    <div class="flex-shrink-0 relative">
+    <div class="flex-shrink-0 relative" data-animate="zoom-in" style="animation-delay: 150ms">
       <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-br from-primary-400 to-primary-600 shadow-2xl shadow-primary-200 flex items-center justify-center relative overflow-hidden">
         <Image
           src={profileImg}
           alt="Bruno Cesano"
           class="absolute inset-0 w-full h-full object-cover object-top"
         />
-        <!-- Yellow accent dot -->
-        <div class="absolute -bottom-3 -right-3 w-16 h-16 bg-accent-400 rounded-2xl rotate-12 shadow-lg"></div>
-        <div class="absolute -top-3 -left-3 w-10 h-10 bg-primary-200 rounded-xl -rotate-6"></div>
       </div>
     </div>
 
