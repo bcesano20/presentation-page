@@ -56,6 +56,40 @@ const navLinks = [
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <style is:global>
+      /* Scroll-reveal animations — toggled by the IntersectionObserver below.
+         Uses @keyframes/animation (not `transition`) so it can't collide with
+         the `transition-all` utility used elsewhere for hover effects. */
+      @keyframes reveal-fade-up    { from { opacity: 0; transform: translateY(28px); }  to { opacity: 1; transform: none; } }
+      @keyframes reveal-fade-left  { from { opacity: 0; transform: translateX(40px); }  to { opacity: 1; transform: none; } }
+      @keyframes reveal-fade-right { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: none; } }
+      @keyframes reveal-zoom-in    { from { opacity: 0; transform: scale(0.9); }         to { opacity: 1; transform: none; } }
+
+      [data-animate] { opacity: 0; }
+      [data-animate="fade-up"]    { transform: translateY(28px); }
+      [data-animate="fade-left"]  { transform: translateX(40px); }
+      [data-animate="fade-right"] { transform: translateX(-40px); }
+      [data-animate="zoom-in"]    { transform: scale(0.9); }
+
+      [data-animate].is-visible {
+        animation-duration: 0.7s;
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+      }
+      [data-animate="fade-up"].is-visible    { animation-name: reveal-fade-up; }
+      [data-animate="fade-left"].is-visible  { animation-name: reveal-fade-left; }
+      [data-animate="fade-right"].is-visible { animation-name: reveal-fade-right; }
+      [data-animate="zoom-in"].is-visible    { animation-name: reveal-zoom-in; }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-animate] {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
   </head>
 
   <body class="bg-white text-slate-800 font-sans antialiased">
@@ -108,6 +142,41 @@ const navLinks = [
         <p>© 2026 <span class="text-white font-medium">Bruno Cesano</span>. All rights reserved.</p>
       </div>
     </footer>
+
+    <script>
+      const animated = document.querySelectorAll('[data-animate]');
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Once the reveal animation finishes, drop the `data-animate` attribute
+      // so no `[data-animate]` rule targets the element anymore. Otherwise
+      // `animation-fill-mode: forwards` keeps pinning `transform`/`opacity`
+      // forever, permanently blocking hover transitions (e.g. card
+      // lift-on-hover) that also animate those same properties.
+      const releaseAnimation = (el: Element) => {
+        el.addEventListener('animationend', () => {
+          el.removeAttribute('data-animate');
+        }, { once: true });
+      };
+
+      if (!prefersReduced && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                releaseAnimation(entry.target);
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+        );
+
+        animated.forEach((el) => observer.observe(el));
+      } else {
+        animated.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
 
   </body>
 </html>

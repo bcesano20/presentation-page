@@ -29,6 +29,7 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
       { name: 'Python',    level: 'Advanced' },
       { name: 'REST APIs', level: 'Advanced' },
       { name: 'SQL',       level: 'Intermediate' },
+      { name: 'Express.js', level: 'Intermediate'}
     ],
   },
   {
@@ -75,8 +76,12 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
 
     <!-- Skill groups grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-      {skillGroups.map((group) => (
-        <div class="bg-white rounded-3xl p-6 shadow-sm border border-primary-100 hover:shadow-md hover:border-primary-200 transition-all">
+      {skillGroups.map((group, i) => (
+        <div
+          class="bg-white rounded-3xl p-6 shadow-sm border border-primary-100 hover:shadow-md hover:border-primary-200 transition-all"
+          data-animate="fade-up"
+          style={`animation-delay: ${i * 120}ms`}
+        >
           <div class="flex items-center gap-3 mb-6">
             <span class="text-2xl">{group.icon}</span>
             <h3 class="font-bold text-slate-800 text-lg">{group.category}</h3>
