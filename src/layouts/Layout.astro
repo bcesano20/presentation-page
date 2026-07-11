@@ -1,5 +1,9 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 import HamburgerMenu from '../components/HamburgerMenu.astro';
+import { languages } from '../i18n/ui';
+import { useTranslations, type Lang } from '../i18n/utils';
 
 interface Props {
   title?: string;
@@ -8,21 +12,26 @@ interface Props {
 
 const SITE_URL = 'https://presentation-page-bruno.vercel.app/';
 
+const lang: Lang = Astro.currentLocale === 'es' ? 'es' : 'en';
+const t = useTranslations(lang);
+const otherLang: Lang = lang === 'en' ? 'es' : 'en';
+const otherLangUrl = getRelativeLocaleUrl(otherLang, '/');
+
 const {
-  title       = 'Bruno Cesano — Full-Stack Developer & Computer Engineer',
-  description = 'Personal website of Bruno Cesano, a Full-Stack Developer and Computer Engineer based in Barcelona. Building modern web applications with React, Django, Python, and more.',
+  title       = t('meta.title'),
+  description = t('meta.description'),
 } = Astro.props;
 
 const navLinks = [
-  { href: '#about',    label: 'About'    },
-  { href: '#skills',   label: 'Skills'   },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact',  label: 'Contact'  },
+  { href: '#about',    label: t('nav.about')    },
+  { href: '#skills',   label: t('nav.skills')   },
+  { href: '#projects', label: t('nav.projects') },
+  { href: '#contact',  label: t('nav.contact')  },
 ];
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +56,7 @@ const navLinks = [
     <meta property="og:title"       content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image"       content={`${SITE_URL}/og-image.png`} />
-    <meta property="og:locale"      content="en_US" />
+    <meta property="og:locale"      content={lang === 'es' ? 'es_ES' : 'en_US'} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -122,13 +131,22 @@ const navLinks = [
               href="#contact"
               class="ml-2 px-4 py-1.5 rounded-full bg-accent-400 text-slate-900 text-sm font-semibold hover:bg-accent-300 transition-colors shadow-sm"
             >
-              Hire me
+              {t('nav.hireMe')}
+            </a>
+          </li>
+          <li>
+            <a
+              href={otherLangUrl}
+              class="ml-1 px-3 py-1.5 rounded-md text-sm font-medium text-slate-500 border border-slate-200 hover:text-primary-600 hover:border-primary-300 transition-all"
+              aria-label={`Switch language to ${languages[otherLang]}`}
+            >
+              {otherLang.toUpperCase()}
             </a>
           </li>
         </ul>
 
         <!-- Hamburger — visible below 900px -->
-        <HamburgerMenu />
+        <HamburgerMenu lang={lang} otherLangUrl={otherLangUrl} />
 
       </nav>
     </header>
@@ -139,7 +157,7 @@ const navLinks = [
 
     <footer class="bg-primary-950 text-primary-300 py-8">
       <div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
-        <p>© 2026 <span class="text-white font-medium">Bruno Cesano</span>. All rights reserved.</p>
+        <p>© 2026 <span class="text-white font-medium">Bruno Cesano</span>. {t('footer.rights')}</p>
       </div>
     </footer>
 

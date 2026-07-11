@@ -1,15 +1,20 @@
 ---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+const lang: Lang = Astro.currentLocale === 'es' ? 'es' : 'en';
+const t = useTranslations(lang);
+
 type Level = 'Basic' | 'Intermediate' | 'Advanced';
 
-const levelConfig: Record<Level, { width: string; bar: string; badge: string }> = {
-  Basic:        { width: '33%',  bar: 'from-slate-300 to-slate-400',       badge: 'bg-slate-100 text-slate-500' },
-  Intermediate: { width: '66%',  bar: 'from-primary-300 to-primary-500',   badge: 'bg-primary-100 text-primary-700' },
-  Advanced:     { width: '100%', bar: 'from-primary-500 to-accent-500',    badge: 'bg-accent-300/40 text-yellow-700' },
+const levelConfig: Record<Level, { width: string; bar: string; badge: string; label: string }> = {
+  Basic:        { width: '33%',  bar: 'from-slate-300 to-slate-400',       badge: 'bg-slate-100 text-slate-500',      label: t('skills.level.basic') },
+  Intermediate: { width: '66%',  bar: 'from-primary-300 to-primary-500',   badge: 'bg-primary-100 text-primary-700', label: t('skills.level.intermediate') },
+  Advanced:     { width: '100%', bar: 'from-primary-500 to-accent-500',    badge: 'bg-accent-300/40 text-yellow-700', label: t('skills.level.advanced') },
 };
 
 const skillGroups: { category: string; icon: string; skills: { name: string; level: Level }[] }[] = [
   {
-    category: 'Frontend',
+    category: t('skills.group.frontend'),
     icon: '🎨',
     skills: [
       { name: 'HTML5',        level: 'Advanced'     },
@@ -22,7 +27,7 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
     ],
   },
   {
-    category: 'Backend',
+    category: t('skills.group.backend'),
     icon: '⚙️',
     skills: [
       { name: 'Node.js',   level: 'Intermediate' },
@@ -33,7 +38,7 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
     ],
   },
   {
-    category: 'Tools & DevOps',
+    category: t('skills.group.tools'),
     icon: '🛠️',
     skills: [
       { name: 'Git',     level: 'Advanced'     },
@@ -53,25 +58,16 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
 
     <!-- Section header -->
     <div class="text-center mb-11">
-      <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">What I work with</span>
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">Skills</h2>
+      <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">{t('skills.eyebrow')}</span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">{t('skills.heading')}</h2>
       <div class="mt-4 mx-auto w-16 h-1 bg-accent-400 rounded-full"></div>
     </div>
 
     <p class="text-center w-full max-w-[1020px] text-lg mx-auto text-slate-600">
-      Throughout the different projects I’ve worked on, I’ve had the opportunity to build 
-      and maintain web applications using a variety of technologies across the full stack. 
-      My experience includes developing dynamic and responsive interfaces with smooth and 
-      complex interactions, integrating systems with databases and APIs, and building 
-      reliable backend solutions for production environments.
+      {t('skills.paragraph1')}
     </p>
-    <p class="text-center w-full max-w-[1020px] text-lg mt-3 mb-8 mx-auto text-slate-600">  
-      I’ve worked on both short and long-term projects involving large volumes of data, 
-      real-time maintenance, and applications such as giveaways, gaming platforms, 
-      management systems, and business-focused solutions. From transforming client 
-      requirements and designs into user-friendly interfaces to creating scalable APIs 
-      and backend logic, these technologies have been part of real-world products used 
-      in production environments. 
+    <p class="text-center w-full max-w-[1020px] text-lg mt-3 mb-8 mx-auto text-slate-600">
+      {t('skills.paragraph2')}
     </p>
 
     <!-- Skill groups grid -->
@@ -94,7 +90,7 @@ const skillGroups: { category: string; icon: string; skills: { name: string; lev
                   <div class="flex justify-between items-center mb-1.5">
                     <span class="font-medium text-slate-700 text-sm">{skill.name}</span>
                     <span class={`text-xs font-semibold px-2 py-0.5 rounded-full ${cfg.badge}`}>
-                      {skill.level}
+                      {cfg.label}
                     </span>
                   </div>
                   <div class="h-1.5 bg-primary-100 rounded-full overflow-hidden">

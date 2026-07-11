@@ -1,27 +1,29 @@
 ---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+const lang: Lang = Astro.currentLocale === 'es' ? 'es' : 'en';
+const t = useTranslations(lang);
+
 const projects = [
   {
-    title: 'Presentation Page',
-    description:
-      'This personal website, built with Astro and Tailwind CSS. Optimized for performance and deployed on Vercel with zero configuration.',
+    title: t('projects.item.presentationPage.title'),
+    description: t('projects.item.presentationPage.description'),
     tags: ['Astro', 'Tailwind CSS', 'Vercel'],
     github: 'https://github.com/bcesano20/presentation-page',
     live: null,
     accent: true,
   },
   {
-    title: 'Work Order Management System for a Service Provider',
-    description:
-      'Managemen system built with React and Django with an auth mechanism, management different entities of the context such as Clients, Technicians, Work Orders, etc. This work was used as my final project to get my degree in Engineering ',
+    title: t('projects.item.tesisApp.title'),
+    description: t('projects.item.tesisApp.description'),
     tags: ['React', 'Python', 'Django', 'REST APIs'],
     github: 'https://github.com/bcesano20/tesis-app',
     live: null,
     accent: false,
   },
   {
-    title: 'SpendWise',
-    description:
-      'A web application for smart expense management that allows you to track your expenses and income and view detailed reports for personal analysis.',
+    title: t('projects.item.spendwise.title'),
+    description: t('projects.item.spendwise.description'),
     tags: ['React', 'PostgreSQL', 'Node.js', 'Express.js', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/bcesano20/expense-tracker-frontend',
     githubBackend: 'https://github.com/bcesano20/expense-tracker-backend',
@@ -36,21 +38,14 @@ const projects = [
 
     <!-- Section header -->
     <div class="text-center mb-16">
-      <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">What I've built</span>
-      <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">Projects</h2>
+      <span class="text-primary-500 font-semibold text-sm uppercase tracking-widest">{t('projects.eyebrow')}</span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2">{t('projects.heading')}</h2>
       <div class="mt-4 mx-auto w-16 h-1 bg-accent-400 rounded-full"></div>
       <p class="text-center w-full max-w-[1020px] text-lg mt-8 mx-auto text-slate-600">
-        Over the last few years, I’ve worked on a variety of projects involving 
-        real clients, gathering requirements, developing solutions, and maintaining 
-        applications already in production. My experience includes both short and long-term 
-        projects, where I collaborated on building and improving systems according to 
-        business needs and user requirements.
+        {t('projects.paragraph1')}
       </p>
-      <p class="text-center w-full max-w-[1020px] text-lg mt-3 mb-8 mx-auto text-slate-600">  
-        Since many of these projects were developed professionally and cannot be
-         publicly shared, I’m unable to showcase all of them here. However, below
-          you can find some selected projects, along with a link to my GitHub 
-          profile where I share personal work and additional examples of my development experience.
+      <p class="text-center w-full max-w-[1020px] text-lg mt-3 mb-8 mx-auto text-slate-600">
+        {t('projects.paragraph2')}
       </p>
     </div>
 
@@ -120,7 +115,7 @@ const projects = [
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                 </svg>
-                {project.githubBackend ? 'Frontend' : 'GitHub'}
+                {project.githubBackend ? t('projects.link.frontend') : t('projects.link.github')}
               </a>
               {project.githubBackend && (
                 <a
@@ -136,7 +131,7 @@ const projects = [
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                   </svg>
-                  Backend
+                  {t('projects.link.backend')}
                 </a>
               )}
               {project.live && (
@@ -153,7 +148,7 @@ const projects = [
                   <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
-                  Live demo
+                  {t('projects.link.liveDemo')}
                 </a>
               )}
             </div>
@@ -173,7 +168,7 @@ const projects = [
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
         </svg>
-        See all projects on GitHub
+        {t('projects.viewAll')}
       </a>
     </div>
 
