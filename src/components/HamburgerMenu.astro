@@ -1,9 +1,21 @@
 ---
+import { languages } from '../i18n/ui';
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  otherLangUrl: string;
+}
+
+const { lang, otherLangUrl } = Astro.props;
+const t = useTranslations(lang);
+const otherLang: Lang = lang === 'en' ? 'es' : 'en';
+
 const navLinks = [
-  { href: '#about',    label: 'About'    },
-  { href: '#skills',   label: 'Skills'   },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact',  label: 'Contact'  },
+  { href: '#about',    label: t('nav.about')    },
+  { href: '#skills',   label: t('nav.skills')   },
+  { href: '#projects', label: t('nav.projects') },
+  { href: '#contact',  label: t('nav.contact')  },
 ];
 ---
 
@@ -43,7 +55,14 @@ const navLinks = [
       href="#contact"
       class="mobile-link mt-2 px-4 py-3 rounded-xl bg-accent-400 text-slate-900 font-semibold text-center hover:bg-accent-300 transition-colors shadow-sm"
     >
-      Hire me
+      {t('nav.hireMe')}
+    </a>
+    <a
+      href={otherLangUrl}
+      class="mobile-link mt-1 px-4 py-3 rounded-xl text-slate-500 font-medium text-center border border-slate-200 hover:text-primary-600 hover:border-primary-300 transition-colors"
+      aria-label={`Switch language to ${languages[otherLang]}`}
+    >
+      {otherLang.toUpperCase()}
     </a>
   </nav>
 </div>
