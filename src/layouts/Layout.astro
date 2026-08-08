@@ -1,5 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
+import Analytics from '@vercel/analytics/astro';
 
 import HamburgerMenu from '../components/HamburgerMenu.astro';
 import { languages } from '../i18n/ui';
@@ -35,6 +36,7 @@ const navLinks = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Analytics />
 
     <!-- Primary SEO -->
     <title>{title}</title>
