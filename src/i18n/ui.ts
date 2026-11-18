@@ -72,9 +72,9 @@ export const ui = {
       'Over the last few years, I’ve worked on a variety of projects involving real clients, gathering requirements, developing solutions, and maintaining applications already in production. My experience includes both short and long-term projects, where I collaborated on building and improving systems according to business needs and user requirements.',
     'projects.paragraph2':
       'Since many of these projects were developed professionally and cannot be publicly shared, I’m unable to showcase all of them here. However, below you can find some selected projects, along with a link to my GitHub profile where I share personal work and additional examples of my development experience.',
-    'projects.item.presentationPage.title': 'Presentation Page',
-    'projects.item.presentationPage.description':
-      'This personal website, built with Astro and Tailwind CSS. Optimized for performance and deployed on Vercel with zero configuration.',
+    'projects.item.travelPhoto.title': 'Travel Photos App',
+    'projects.item.travelPhoto.description':
+      'Website to can post different photos about travels in orderer folders and share with the public accross a link just for read, having a personal admin panel to update the photo grid by the owner.',
     'projects.item.tesisApp.title': 'Work Order Management System for a Service Provider',
     'projects.item.tesisApp.description':
       'Management system built with React and Django with an auth mechanism, managing different entities of the context such as Clients, Technicians, Work Orders, etc. This work was used as my final project to get my degree in Engineering.',
@@ -163,9 +163,9 @@ export const ui = {
       'Durante los últimos años, he trabajado en una variedad de proyectos con clientes reales, relevando requerimientos, desarrollando soluciones y manteniendo aplicaciones ya en producción. Mi experiencia incluye proyectos de corto y largo plazo, donde colaboré en la construcción y mejora de sistemas según las necesidades del negocio y de los usuarios.',
     'projects.paragraph2':
       'Dado que muchos de estos proyectos fueron desarrollados profesionalmente y no pueden compartirse públicamente, no puedo mostrarlos todos aquí. Sin embargo, a continuación puedes encontrar algunos proyectos seleccionados, junto con un enlace a mi perfil de GitHub donde comparto trabajo personal y ejemplos adicionales de mi experiencia como desarrollador.',
-    'projects.item.presentationPage.title': 'Página de Presentación',
-    'projects.item.presentationPage.description':
-      'Este sitio web personal, construido con Astro y Tailwind CSS. Optimizado para el rendimiento y desplegado en Vercel sin configuración adicional.',
+    'projects.item.travelPhoto.title': 'Travel Photo App',
+    'projects.item.travelPhoto.description':
+      'Sitio web en el que se puedan publicar diferentes fotos de viajes organizadas en carpetas y compartirlas con el público a través de un enlace de solo lectura, con un panel de administración personal para que el propietario actualice la galería de fotos.',
     'projects.item.tesisApp.title': 'Sistema de Gestión de Órdenes de Trabajo para un Proveedor de Servicios',
     'projects.item.tesisApp.description':
       'Sistema de gestión construido con React y Django con mecanismo de autenticación, administrando distintas entidades del contexto como Clientes, Técnicos, Órdenes de Trabajo, etc. Este trabajo fue utilizado como proyecto final para obtener mi título de Ingeniería.',
